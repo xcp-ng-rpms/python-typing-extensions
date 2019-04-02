@@ -1,0 +1,78 @@
+%global srcname typing_extensions
+
+Name:           python-typing-extensions
+Version:        3.7.2
+Release:        1%{?dist}
+Summary:        Python Typing Extensions
+
+License:        Python
+URL:            https://pypi.org/project/typing-extensions/
+Source0:        %{pypi_source}
+
+Patch0:         https://github.com/python/typing/commit/1f49677868a60ed697b0eafb2fb56471233b4ea5.patch#/0001-Run-the-tests-using-the-current-Python-executable.patch
+
+BuildArch:      noarch
+
+
+%description
+Typing Extensions - Backported and Experimental Type Hints for Python
+
+The typing module was added to the standard library in Python 3.5 on a
+provisional basis and will no longer be provisional in Python 3.7.
+However, this means users of Python 3.5 - 3.6 who are unable to upgrade will not
+be able to take advantage of new types added to the typing module, such as
+typing.Text or typing.Coroutine.
+
+The typing_extensions module contains both backports of these changes as well as
+experimental types that will eventually be added to the typing module, such as
+Protocol.
+
+Users of other Python versions should continue to install and use the typing
+module from PyPi instead of using this one unless specifically writing code that
+must be compatible with multiple Python versions or requires experimental types.
+
+%package -n python3-typing-extensions
+Summary:        %{summary}
+BuildRequires:  python3-devel
+BuildRequires:  python3-test
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description -n python3-typing-extensions
+Typing Extensions - Backported and Experimental Type Hints for Python
+
+The typing module was added to the standard library in Python 3.5 on a
+provisional basis and will no longer be provisional in Python 3.7.
+However, this means users of Python 3.5 - 3.6 who are unable to upgrade will not
+be able to take advantage of new types added to the typing module, such as
+typing.Text or typing.Coroutine.
+
+The typing_extensions module contains both backports of these changes as well as
+experimental types that will eventually be added to the typing module, such as
+Protocol.
+
+Users of other Python versions should continue to install and use the typing
+module from PyPi instead of using this one unless specifically writing code that
+must be compatible with multiple Python versions or requires experimental types.
+
+%prep
+%autosetup -p2 -n %{srcname}-%{version}
+
+%build
+%py3_build
+
+%install
+%py3_install
+
+%check
+%{__python3} src_py3/test_typing_extensions.py
+
+%files -n python3-typing-extensions
+%license LICENSE
+%doc README.rst
+%{python3_sitelib}/%{srcname}-*.egg-info/
+%{python3_sitelib}/%{srcname}.py
+%{python3_sitelib}/__pycache__/*
+
+%changelog
+* Sun Mar 31 2019 Jonny Heggheim <hegjon@gmail.com> - 3.7.2-1
+- Inital packaging
