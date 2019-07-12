@@ -1,15 +1,13 @@
 %global srcname typing_extensions
 
 Name:           python-typing-extensions
-Version:        3.7.2
+Version:        3.7.4
 Release:        1%{?dist}
 Summary:        Python Typing Extensions
 
 License:        Python
 URL:            https://pypi.org/project/typing-extensions/
 Source0:        %{pypi_source}
-
-Patch0:         https://github.com/python/typing/commit/1f49677868a60ed697b0eafb2fb56471233b4ea5.patch#/0001-Run-the-tests-using-the-current-Python-executable.patch
 
 BuildArch:      noarch
 
@@ -55,7 +53,7 @@ module from PyPi instead of using this one unless specifically writing code that
 must be compatible with multiple Python versions or requires experimental types.
 
 %prep
-%autosetup -p2 -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version}
 
 %build
 %py3_build
@@ -74,5 +72,8 @@ must be compatible with multiple Python versions or requires experimental types.
 %{python3_sitelib}/__pycache__/*
 
 %changelog
+* Fri Jul 12 2019 Jonny Heggheim <hegjon@gmail.com> - 3.7.4-1
+- Updated to 3.7.4
+
 * Sun Mar 31 2019 Jonny Heggheim <hegjon@gmail.com> - 3.7.2-1
 - Inital packaging
