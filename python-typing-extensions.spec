@@ -2,7 +2,7 @@
 
 Name:           python-typing-extensions
 Version:        3.7.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python Typing Extensions
 
 License:        Python
@@ -72,6 +72,9 @@ must be compatible with multiple Python versions or requires experimental types.
 %{python3_sitelib}/__pycache__/*
 
 %changelog
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.7.4-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Thu Oct 03 2019 Miro Hrončok <mhroncok@redhat.com> - 3.7.4-4
 - Rebuilt for Python 3.8.0rc1 (#1748018)
 
