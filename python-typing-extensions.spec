@@ -1,8 +1,8 @@
 %global srcname typing_extensions
 
 Name:           python-typing-extensions
-Version:        3.7.4
-Release:        5%{?dist}
+Version:        3.7.4.2
+Release:        1%{?dist}
 Summary:        Python Typing Extensions
 
 License:        Python
@@ -31,8 +31,13 @@ must be compatible with multiple Python versions or requires experimental types.
 
 %package -n python3-typing-extensions
 Summary:        %{summary}
+
 BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-test
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-pytest-cov
 %{?python_provide:%python_provide python3-%{srcname}}
 
 %description -n python3-typing-extensions
@@ -72,6 +77,10 @@ must be compatible with multiple Python versions or requires experimental types.
 %{python3_sitelib}/__pycache__/*
 
 %changelog
+* Sat Apr 11 2020 Fabian Affolter <mail@fabian-affolter.ch> - 3.7.4.2-1
+- Support for Python 3.9 (rhbz#1808663)
+- Update to latest upstream release 3.7.4.2 (rhbz#1766182)
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.7.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
