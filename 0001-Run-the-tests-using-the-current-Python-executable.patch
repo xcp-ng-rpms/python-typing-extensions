@@ -1,0 +1,39 @@
+From 1f49677868a60ed697b0eafb2fb56471233b4ea5 Mon Sep 17 00:00:00 2001
+From: "Michael R. Crusoe" <1330696+mr-c@users.noreply.github.com>
+Date: Thu, 14 Feb 2019 12:25:27 +0200
+Subject: [PATCH] Run the tests using the current Python executable (#615)
+
+Not whatever "python" might be.
+---
+ typing_extensions/src_py2/test_typing_extensions.py | 3 ++-
+ typing_extensions/src_py3/test_typing_extensions.py | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/typing_extensions/src_py2/test_typing_extensions.py b/typing_extensions/src_py2/test_typing_extensions.py
+index eb5acf3..922d8cd 100644
+--- a/typing_extensions/src_py2/test_typing_extensions.py
++++ b/typing_extensions/src_py2/test_typing_extensions.py
+@@ -860,7 +860,8 @@ def test_typing_extensions_compiles_with_opt(self):
+         file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                  'typing_extensions.py')
+         try:
+-            subprocess.check_output('python -OO {}'.format(file_path),
++            subprocess.check_output('{} -OO {}'.format(sys.executable,
++                                                       file_path),
+                                     stderr=subprocess.STDOUT,
+                                     shell=True)
+         except subprocess.CalledProcessError:
+diff --git a/typing_extensions/src_py3/test_typing_extensions.py b/typing_extensions/src_py3/test_typing_extensions.py
+index eb0c64f..815e425 100644
+--- a/typing_extensions/src_py3/test_typing_extensions.py
++++ b/typing_extensions/src_py3/test_typing_extensions.py
+@@ -1389,7 +1389,8 @@ def test_typing_extensions_compiles_with_opt(self):
+         file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                  'typing_extensions.py')
+         try:
+-            subprocess.check_output('python -OO {}'.format(file_path),
++            subprocess.check_output('{} -OO {}'.format(sys.executable,
++                                                       file_path),
+                                     stderr=subprocess.STDOUT,
+                                     shell=True)
+         except subprocess.CalledProcessError:
