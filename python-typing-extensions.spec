@@ -1,7 +1,7 @@
 %global srcname typing_extensions
 
 Name:           python-typing-extensions
-Version:        3.7.4.2
+Version:        3.7.4.3
 Release:        1%{?dist}
 Summary:        Python Typing Extensions
 
@@ -10,7 +10,6 @@ URL:            https://pypi.org/project/typing-extensions/
 Source0:        %{pypi_source}
 
 BuildArch:      noarch
-
 
 %description
 Typing Extensions - Backported and Experimental Type Hints for Python
@@ -77,6 +76,9 @@ must be compatible with multiple Python versions or requires experimental types.
 %{python3_sitelib}/__pycache__/*
 
 %changelog
+* Sun Aug 23 2020 Fabian Affolter <mail@fabian-affolter.ch> - 3.7.4.3-1
+- Update to latest upstream release 3.7.4.3 (rhbz#1871451)
+
 * Sat Apr 11 2020 Fabian Affolter <mail@fabian-affolter.ch> - 3.7.4.2-1
 - Support for Python 3.9 (rhbz#1808663)
 - Update to latest upstream release 3.7.4.2 (rhbz#1766182)
