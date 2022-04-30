@@ -2,7 +2,7 @@
 
 Name:           python-typing-extensions
 Version:        3.7.4.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python Typing Extensions
 
 License:        Python
@@ -76,6 +76,9 @@ must be compatible with multiple Python versions or requires experimental types.
 %{python3_sitelib}/__pycache__/*
 
 %changelog
+* Sat Apr 30 2022 Jonny Heggheim <hegjon@gmail.com> - 3.7.4.3-2
+- Rebuild for #2069579
+
 * Sun Aug 23 2020 Fabian Affolter <mail@fabian-affolter.ch> - 3.7.4.3-1
 - Update to latest upstream release 3.7.4.3 (rhbz#1871451)
 
